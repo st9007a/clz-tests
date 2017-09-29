@@ -97,7 +97,17 @@ int main(int argc, char *argv[])
     output = fopen("harley.txt","a");
 #endif
     uint64_t timecall;
-    for (uint32_t i = min; i < max; i++) {
+
+#if defined(u8)
+    uint8_t i;
+#elif defined(u16)
+    uint16_t i;
+#elif defined(u32)
+    uint32_t i;
+#else
+    uint64_t i;
+#endif
+    for (i = min; i < max; i++) {
         timecall = 0;
 #ifdef MP
         #pragma omp parallel for

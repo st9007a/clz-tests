@@ -1,5 +1,11 @@
 CC ?= gcc
 CFLAGS_common ?= -Wall -std=gnu11 -g -DDEBUG -O0
+
+bit_width ?= 32
+from ?= 67100000
+to ?= 67110000
+
+CFLAGS_common += -Du$(bit_width)
 ifeq ($(strip $(PROFILE)),1)
 CFLAGS_common += -Dcorrect
 endif
@@ -33,7 +39,7 @@ SRCS_common = main.c
 
 run: $(EXEC)
 	for method in $(EXEC); do\
-		taskset -c 1 ./$$method 67100000 67116384; \
+		taskset -c 1 ./$$method $(from) $(to); \
 	done
 
 plot: iteration.txt iteration.txt binary.txt byte.txt
