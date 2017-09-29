@@ -12,5 +12,4 @@ plot [:][:500]'iteration.txt' using 1:2 with points title 'iteration',\
 'byte.txt' using 1:2 with points title 'byte',\
 'binary.txt' using 1:2 with points title 'binary',\
 'recursive.txt' using 1:2 with points title 'recursive',\
-'harley.txt' using 1:2 with points title 'harley'
 
