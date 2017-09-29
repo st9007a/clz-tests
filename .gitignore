@@ -5,3 +5,4 @@ iteration
 recursive
 *.o
 .*.d
+*.txt
