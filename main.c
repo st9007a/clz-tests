@@ -63,10 +63,10 @@ int main(int argc, char *argv[])
     for (int try = 0; try < 20; try++) {
         timec = 0;
         get_cycles(&timec_high1, &timec_low1);
-        printf("%u:%d \n", 0, clz(0));
-        assert((sizeof(uint32_t) * 8) == clz(0));
+        printf("%u:%d \n", 0, clz((uint32_t)0));
+        assert((sizeof(uint32_t) * 8) == clz((uint32_t)0));
         for (uint32_t i = 0; i < 31; i++) {
-            printf("%u:%d \n", 1 << i, clz(1 << i));
+            printf("%u:%d \n", 1 << i, clz((uint32_t)1 << i));
             for (uint32_t j = (1 << i); j < (1 << (i + 1)); j++) {
                 assert( __builtin_clz (j) == clz(j));
             }
