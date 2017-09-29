@@ -1,5 +1,5 @@
 CC ?= gcc
-CFLAGS_common ?= -Wall -std=gnu99 -g -DDEBUG -O0
+CFLAGS_common ?= -Wall -std=gnu11 -g -DDEBUG -O0
 ifeq ($(strip $(PROFILE)),1)
 CFLAGS_common += -Dcorrect
 endif
@@ -12,7 +12,7 @@ EXEC = \
 	binary \
 	byte \
 	recursive \
-	harley
+	# harley
 
 deps := $(EXEC:%=.%.o.d)
 
@@ -29,7 +29,7 @@ SRCS_common = main.c
 %: $(SRCS_common) %.c clz.h
 	$(CC) $(CFLAGS_common) -o $@ \
 		-MMD -MF .$@.d \
-		-D$(shell echo $(subst .o,,$@)) $(SRCS_common)
+		-D$(shell echo $(subst .o,,$@)) $(SRCS_common) $@.c
 
 run: $(EXEC)
 	for method in $(EXEC); do\
