@@ -6,3 +6,4 @@ recursive
 *.o
 .*.d
 *.txt
+*.png
